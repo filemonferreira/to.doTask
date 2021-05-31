@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StatusBar, StyleSheet } from 'react-native';
 
-import myStyle from '../styles/color';
+
 
 
 
@@ -18,14 +18,14 @@ const styles = StyleSheet.create({
   header: {
     paddingTop: StatusBar.currentHeight,
     paddingBottom: 44,
-    backgroundColor: myStyle.headerColorLight,
+    backgroundColor: '#273FAD',
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row'
   },
   headerText: {
     fontSize: 24,
-    color: '#FFF',
+    color: '#fff',
     fontFamily: 'Poppins-Regular',
   }
 });
