@@ -1,18 +1,29 @@
 import React, { useState } from 'react';
-
+import {View} from 'react-native';
 import { Header } from '../components/Header';
 import { MyTasksList } from '../components/MyTasksList';
 import { TodoInput } from '../components/TodoInput';
+
+import {useThemeCli} from '../hooks/theme';
 
 interface Task {
   id: number;
   title: string;
   done: boolean;
 }
+interface Toggle {
+  isEnable: boolean;
+}
 
 export function Home() {
+  const {theme} = useThemeCli();
   const [tasks, setTasks] = useState<Task[]>([]);
-  const [theme, setTheme] = useState('light');
+  const [isEnabled, setIsEnabled] = useState(false);
+
+  function handleToggle(newToggle: boolean){
+      setIsEnabled(newToggle);
+      console.log(isEnabled);
+  }
 
   function handleAddTask(newTaskTitle: string) {
     //TODO - add new task if it's not empty
@@ -48,8 +59,8 @@ export function Home() {
 
   
   return (
-    <>
-      <Header/>
+    <View style={{flex: 1, backgroundColor: theme === 'Light' ? '#fff' : '#1F1F1F'}}>
+      <Header />
 
       <TodoInput addTask={handleAddTask} />
 
@@ -58,6 +69,6 @@ export function Home() {
         onPress={handleMarkTaskAsDone}
         onLongPress={handleRemoveTask}
       />
-    </>
+    </View>
   )
 }
